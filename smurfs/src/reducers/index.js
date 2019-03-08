@@ -7,6 +7,8 @@ import {
   FETCHED_SMURFS,
   ADDING_SMURF,
   ADDED_SMURF,
+  REMOVING_SMURF,
+  REMOVED_SMURF,
   ERROR
 } from '../actions'
 
@@ -16,7 +18,7 @@ const initialState = {
   fetchingSmurfs: false,
   addingSmurf: false,
   updatingSmurf: false,
-  deletingSmurf: false,
+  removingSmurf: false,
   error: ''
 }
 
@@ -57,6 +59,19 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        smurfs: action.payload,
+        error: ''
+      }
+    case REMOVING_SMURF:
+      return {
+        ...state,
+        removingSmurf: true,
+        error: ''
+      }
+    case REMOVED_SMURF:
+      return {
+        ...state,
+        removingSmurf: false,
         smurfs: action.payload,
         error: ''
       }

@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import { removeSmurf } from '../actions';
 
 const SmurfContainer = styled.div`
     display: flex;
@@ -11,19 +14,37 @@ const SmurfContainer = styled.div`
     background-color: cornflowerblue;
     width: 300px;
 
-    > p {
+    > p, button {
         margin: 10px;
     }
 `;
 
-const Smurf = props => {
-    return (
-        <SmurfContainer>
-            <p>Name: {props.name}</p>
-            <p>Age: {props.age}</p>
-            <p>Height: {props.height}</p>
-        </SmurfContainer>
-    )
+class Smurf extends Component {
+
+    handleRemoveSmurf = (e) => {
+        e.preventDefault();
+        console.log(`Firing removeSmurf with id: ${this.props.id}`);
+        console.log('props:');
+        console.log(this.props);
+        this.props.removeSmurf(this.props.id);
+    }
+
+    render(){
+        return (
+            <SmurfContainer>
+                <p>Name: {this.props.name}</p>
+                <p>Age: {this.props.age}</p>
+                <p>Height: {this.props.height}</p>
+                <button onClick={this.handleRemoveSmurf}>Delete</button>
+            </SmurfContainer>
+        )
+    }    
 }
 
-export default Smurf;
+// const mapStateToProps = state => {
+//     return {
+
+//     }
+// }
+
+export default connect(null, { removeSmurf })(Smurf);
