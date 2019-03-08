@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import './App.css';
 import SmurfForm from './SmurfForm'
 import Smurf from './Smurf';
 import { fetchSmurfs } from '../actions';
@@ -12,6 +12,15 @@ import { fetchSmurfs } from '../actions';
   Just remember, `how do I `connect` my components to redux?`
   `How do I ensure that my component links the state to props?`
 */
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
+
 class App extends Component {
 
   componentDidMount = () => {
@@ -21,7 +30,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <AppContainer>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your Redux version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
@@ -35,7 +44,7 @@ class App extends Component {
                   height={smurf.height}
                 />
         })}
-      </div>
+      </AppContainer>
     );
   }
 }

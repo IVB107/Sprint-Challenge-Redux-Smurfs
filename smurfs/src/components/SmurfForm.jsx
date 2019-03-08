@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { addSmurf } from '../actions';
+
+const FormContainer = styled.div`
+    margin: 20px 0;
+`;
 
 class SmurfForm extends Component {
     constructor(){
@@ -27,11 +32,16 @@ class SmurfForm extends Component {
         e.preventDefault();
         console.log('inside handle submit smurf')
         this.props.addSmurf(this.state)
+        this.setState({
+            name: '',
+            age: '',
+            height: ''
+        })
     }
 
     render(){
         return (
-            <div>
+            <FormContainer>
                 <form action="submit">
                     <input 
                         type="text"
@@ -56,7 +66,7 @@ class SmurfForm extends Component {
                     />
                     <button onClick={this.handleSubmit}>Submit</button>
                 </form>
-            </div>
+            </FormContainer>
         )
     }
 
