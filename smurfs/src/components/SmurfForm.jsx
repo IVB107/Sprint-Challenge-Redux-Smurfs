@@ -13,11 +13,6 @@ class SmurfForm extends Component {
         }
     }
 
-    // componentDidMount = () => {
-    //     console.log('Inside SmurfForm CDM');
-    //     this.props.fetchSmurfs();
-    // }
-
     handleChange = e => {
 
         console.log(e.target.value);
@@ -31,7 +26,7 @@ class SmurfForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         console.log('inside handle submit smurf')
-        // this.props.addSmurf(this.state)
+        this.props.addSmurf(this.state)
     }
 
     render(){
@@ -66,11 +61,5 @@ class SmurfForm extends Component {
     }
 
 }
-
-// mapStateToProps = state => {
-//     return {
-
-//     }
-// }
 
 export default connect(null, { addSmurf })(SmurfForm)

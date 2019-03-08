@@ -57,6 +57,7 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        smurfs: action.payload,
         error: ''
       }
     case ERROR:
