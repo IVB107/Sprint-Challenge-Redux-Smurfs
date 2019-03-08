@@ -11,7 +11,7 @@ import { smurfReducer } from './reducers';
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  smurfReducer, // this is the most basic reducer. A function that returns and object. Replace it.
+  smurfReducer,
   composeEnhancer(applyMiddleware(thunk, logger))
 );
 

@@ -6,7 +6,8 @@ import {
   FETCHING_SMURFS,
   FETCHED_SMURFS,
   ADDING_SMURF,
-  ADDED_SMURF
+  ADDED_SMURF,
+  ERROR
 } from '../actions'
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -16,7 +17,7 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null
+  error: ''
 }
 
 
@@ -33,19 +34,36 @@ export const smurfReducer = (state = initialState, action) => {
     case FETCHING_SMURFS:
       return {
         ...state,
+        fetchingSmurfs: true,
+        error: ''
+
       }
     case FETCHED_SMURFS:
+      console.log('state.smurfs');
+      console.log(state.smurfs);
       return {
         ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload,
+        error: ''
       }
     case ADDING_SMURF:
       return {
         ...state,
+        addingSmurf: true,
+        error: ''
       }
     case ADDED_SMURF:
       return {
         ...state,
+        addingSmurf: false,
+        error: ''
       }
+    case ERROR:
+      return {
+        ...state,
+        error: 'ERROR'
+      } 
     default:
       return state
   }
